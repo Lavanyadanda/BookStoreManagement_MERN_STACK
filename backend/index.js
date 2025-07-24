@@ -1,13 +1,20 @@
 import express from 'express';
-import { PORT, mongoDBURL } from './config.js';
+
 import mongoose from 'mongoose';
 import booksRoute from './routes/booksRoute.js';
 import cors from 'cors';
+import dotenv from 'dotenv';
+dotenv.config();
+
 import downloadsRoute from "./routes/downloadsRoute.js";
 const app = express();
-
+const PORT = process.env.PORT;
+const mongoDBURL=process.env.MONGODB_URL;
 // Middleware for parsing request body
 app.use(express.json());
+// app.use(cors({
+//   origin: 'https://frontend.netlify.app'
+// }));
 
 // Middleware for handling CORS POLICY
 // Option 1: Allow All Origins with Default of cors(*)

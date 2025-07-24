@@ -2,10 +2,12 @@
 import mongoose from 'mongoose';
 import axios from 'axios';
 import { Book } from './models/bookModels.js'; // ✅ Correct import
-import { mongoDBURL } from './config.js';
 
+import dotenv from 'dotenv';
+dotenv.config();
+const MONGODB_URL =process.env.MONGODB_URL;
 mongoose
-  .connect(mongoDBURL)
+  .connect(MONGODB_URL)
   .then(() => {
     console.log('MongoDB connected');
     fetchAndInsertBooks();
