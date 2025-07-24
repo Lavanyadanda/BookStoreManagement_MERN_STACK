@@ -2,7 +2,9 @@
 import mongoose from 'mongoose';
 import axios from 'axios';
 import { Book } from './models/bookModels.js'; // ✅ Correct import
-import { mongoDBURL } from './config.js';
+import dotenv from 'dotenv';
+dotenv.config();
+const mongoDBURL=process.env.mongoDBURL;
 
 mongoose
   .connect(mongoDBURL)
